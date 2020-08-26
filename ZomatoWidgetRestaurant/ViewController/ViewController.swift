@@ -43,9 +43,9 @@ extension ViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell") as? RestaurantCell else {
             return UITableViewCell()
         }
-        cell.titleLabel.attributedText =  getAttributedString(string: "Hello I'm a cell")
-        cell.titleLabel.textColor = .black
-        cell.rightLabel.attributedText = getAttributedString(string: "rating label")
+        cell.setTitle(name: "Hello I'm a restaurant", location: "This is my location", type: "Types", subtypes: "Type 1, Type 2, Type 3")
+//        cell.titleLabel.attributedText =  getAttributedString(string: "Hello I'm a cell \nThis is the new line \nthis is another new line")
+        cell.rightLabel.attributedText = getAttributedString(string: "1.9")
         return cell
     }
     
