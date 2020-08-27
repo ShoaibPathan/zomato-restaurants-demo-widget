@@ -25,7 +25,7 @@
 		606957D424F65D82009F2DD2 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606957CD24F65D82009F2DD2 /* Photo.swift */; };
 		606957DA24F66052009F2DD2 /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606957D924F66052009F2DD2 /* RestaurantCell.swift */; };
 		606957DC24F6606D009F2DD2 /* RestaurantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 606957DB24F6606D009F2DD2 /* RestaurantCell.xib */; };
-		60F468DE24F820C800A866C4 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F468DD24F820C800A866C4 /* File.swift */; };
+		60F468DE24F820C800A866C4 /* ZomatoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F468DD24F820C800A866C4 /* ZomatoApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +70,7 @@
 		606957CD24F65D82009F2DD2 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		606957D924F66052009F2DD2 /* RestaurantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
 		606957DB24F6606D009F2DD2 /* RestaurantCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantCell.xib; sourceTree = "<group>"; };
-		60F468DD24F820C800A866C4 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		60F468DD24F820C800A866C4 /* ZomatoApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZomatoApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,7 +188,7 @@
 		60F468DC24F820B100A866C4 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				60F468DD24F820C800A866C4 /* File.swift */,
+				60F468DD24F820C800A866C4 /* ZomatoApi.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -335,7 +335,7 @@
 				606957D124F65D82009F2DD2 /* City.swift in Sources */,
 				606957D424F65D82009F2DD2 /* Photo.swift in Sources */,
 				606957D024F65D82009F2DD2 /* Search.swift in Sources */,
-				60F468DE24F820C800A866C4 /* File.swift in Sources */,
+				60F468DE24F820C800A866C4 /* ZomatoApi.swift in Sources */,
 				606957D324F65D82009F2DD2 /* User.swift in Sources */,
 				606957D224F65D82009F2DD2 /* Restaurant.swift in Sources */,
 			);
