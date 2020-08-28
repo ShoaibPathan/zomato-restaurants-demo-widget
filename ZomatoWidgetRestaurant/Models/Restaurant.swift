@@ -8,6 +8,29 @@
 
 import Foundation
 
+struct RestaurantStruct: Codable {
+    let r: RClassStruct?
+    let id: String?
+    let name: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case r = "R"
+        case id = "id"
+        case name = "name"
+    }
+}
+
+struct RClassStruct: Codable {
+    let resId: Double?
+    let isGroceryStore: Bool?
+    
+    enum CodingKeys: String, CodingKey {
+    //        case hasMenuStatus = "has_menu_status"
+        case resId = "res_id"
+        case isGroceryStore = "is_grocery_store"
+    }
+}
+
 class Restaurant: NSObject, Codable, NSCoding {
     
     var r: RClass?
@@ -79,8 +102,9 @@ class Restaurant: NSObject, Codable, NSCoding {
 }
 
 class RClass : NSObject, Codable, NSCoding {
-    func encode(with coder: NSCoder) {
-        print("encode")
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(resId, forKey: CodingKeys.resId.rawValue)
+        aCoder.encode(isGroceryStore, forKey: CodingKeys.isGroceryStore.rawValue)
     }
     
 //    var hasMenuStatus: [String : Any?]?
