@@ -8,10 +8,46 @@
 
 import Foundation
 
+struct RestaurantStruct: Codable {
+    let r: RClassStruct?
+    let id: String?
+    let name: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case r = "R"
+        case id = "id"
+        case name = "name"
+    }
+}
+
+struct RClassStruct: Codable {
+    let resId: Double?
+    let isGroceryStore: Bool?
+    
+    enum CodingKeys: String, CodingKey {
+    //        case hasMenuStatus = "has_menu_status"
+        case resId = "res_id"
+        case isGroceryStore = "is_grocery_store"
+    }
+}
+
+class RestaurantModel: Codable {
+    var restaurant: Restaurant?
+    
+    enum CodingKeys: String, CodingKey {
+        case restaurant
+    }
+}
+
 class Restaurant: Codable {
+//    var r: RClass?
     var id: String?
     var name: String?
-//    var location: Location?
+    var location: Location?
+    var thumb: String?
+    var cuisines: String?
+    var allReviewCount: Int?
+    var establishments: [String]?
 //    var averageCostForTwo: Int?
 //    var priceRange: Int?
 //    var currency: String?
@@ -32,12 +68,32 @@ class Restaurant: Codable {
 //    var photos: [Photo]?
 //    var allReviews: [Review]?
     
+//    func encode(with aCoder: NSCoder) {
+//        aCoder.encode(id, forKey: CodingKeys.id.rawValue)
+//        aCoder.encode(name, forKey: CodingKeys.name.rawValue)
+////        aCoder.encode(r, forKey: CodingKeys.r.rawValue)
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        id = coder.decodeObject(forKey: CodingKeys.id.rawValue) as? String
+//        name = coder.decodeObject(forKey: CodingKeys.name.rawValue) as? String
+//        latitude = try values.decode(Double.self, forKey: .latitude)
+//        longitude = try values.decode(Double.self, forKey: .longitude)
+//
+//        r = coder.decodeObject(forKey: CodingKeys.r.rawValue) as? RClass
+        
+//        elevation = try additionalInfo.decode(Double.self, forKey: .elevation)
+//    }
     
-    
-    
-    //enum CodingKeys: String, CodingKey {
-        ///case id = "id"
-        ///case name = "name"
+    enum CodingKeys: String, CodingKey {
+//        case r = "R"
+        case id = "id"
+        case name = "name"
+        case location = "location"
+        case thumb = "thumb"
+        case cuisines = "cuisines"
+        case allReviewCount = "all_reviews_count"
+        case establishments = "establishment"
 //        case location = "location"// (ResLocation, optional): Restaurant location details ,
 //        case averageCostForTwo = "average_cost_for_two"// (integer, optional): Average price of a meal for two people ,
 //        case priceRange = "price_range" //(integer, optional): Price bracket of the restaurant (1 being pocket friendly and 4 being the costliest) ,
@@ -58,6 +114,32 @@ class Restaurant: Codable {
 //        case phoneNumbers = "phone_numbers" // (string, optional): [Partner access] Restaurant's contact numbers in csv format ,
 //        case photos = "photos" // (Array[Photo], optional): [Partner access] List of restaurant photos ,
 //        case allReviews = "all_reviews" // (Array[Review], optional): [Partner access] List of restaurant reviews
-   // }
+    }
 }
 
+class RClass : NSObject, Codable, NSCoding {
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(resId, forKey: CodingKeys.resId.rawValue)
+        aCoder.encode(isGroceryStore, forKey: CodingKeys.isGroceryStore.rawValue)
+    }
+    
+//    var hasMenuStatus: [String : Any?]?
+    var resId: Double?
+    var isGroceryStore: Bool?
+    
+    enum CodingKeys: String, CodingKey {
+//        case hasMenuStatus = "has_menu_status"
+        case resId = "res_id"
+        case isGroceryStore = "is_grocery_store"
+    }
+    
+    required init?(coder: NSCoder) {
+        resId = coder.decodeObject(forKey: CodingKeys.resId.rawValue) as? Double
+        isGroceryStore = coder.decodeObject(forKey: CodingKeys.isGroceryStore.rawValue) as? Bool
+//        latitude = try values.decode(Double.self, forKey: .latitude)
+//        longitude = try values.decode(Double.self, forKey: .longitude)
+//
+//        let additionalInfo = try values.nestedContainer(keyedBy: AdditionalInfoKeys.self, forKey: .additionalInfo)
+//        elevation = try additionalInfo.decode(Double.self, forKey: .elevation)
+    }
+}

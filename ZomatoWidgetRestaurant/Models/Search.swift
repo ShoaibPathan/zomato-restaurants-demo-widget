@@ -20,14 +20,14 @@ class Search: NSObject ,Codable, NSCoding {
         resultsFound = decoder.decodeObject(forKey: CodingKeys.resultsFound.rawValue) as? Int
         resultsStart = decoder.decodeObject(forKey: CodingKeys.resultsStart.rawValue) as? Int
         resultsShown = decoder.decodeObject(forKey: CodingKeys.resultsShown.rawValue) as? Int
-        restaurants = decoder.decodeObject(forKey: CodingKeys.restaurants.rawValue) as? [Restaurant]
+        restaurants = decoder.decodeObject(forKey: CodingKeys.restaurants.rawValue) as? [RestaurantModel]
     }
     
     
     var resultsFound: Int?
     var resultsStart: Int?
     var resultsShown: Int?
-    var restaurants: [Restaurant]?
+    var restaurants: [RestaurantModel]?
     
     enum CodingKeys: String, CodingKey {
         case resultsFound = "results_found" // (integer, optional): Number of results found ,
