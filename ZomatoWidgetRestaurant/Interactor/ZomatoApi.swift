@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ZomatoApi.swift
 //  ZomatoWidgetRestaurant
 //
 //  Created by Amirthy Tejeshwar on 27/08/20.
@@ -13,30 +13,22 @@ class ZomatoApi {
     
     let baseUrl = "https://developers.zomato.com/api/v2.1"
     
-    func getResponse() {
-        let urlString = baseUrl + "/search?entity_id=6"
+    func getSearchResponse<T: Codable>(entityId: Int = 5, completion: @escaping ((Bool, T?, Error?) -> Void)) {
+        let urlString = baseUrl + "/search?entity_id=\(entityId)"
         guard let urlRequest = getRequest(url: urlString) else {
             // handle when something that request didn't happe cause of an error
             return
         }
         URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-            
-            guard let data = data else {
-                print("Error inside guard let")
-                return }
-            do{
-                print(data)
-                let decoder = JSONDecoder()
-                /// TODO decoding the response
-                let searchResults = try? decoder.decode(Search.self, from: data)
-                guard let search = searchResults else{ return }
-                DispatchQueue.main.async {
-                    print(search.resultsStart)
-                    //self.updateWeatherDataWithModel(weatherStruct: weather)
-                }
-                
+            guard let data = data, error == nil else {
+                completion(false, nil, error)
+                return
             }
-            
+            do{
+                let decoder = JSONDecoder()
+                let responseData = try? decoder.decode(T.self, from: data)
+                completion(true, responseData, nil)
+            }
         }.resume()
     }
     
