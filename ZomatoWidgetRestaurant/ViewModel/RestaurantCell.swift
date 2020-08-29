@@ -20,14 +20,17 @@ class RestaurantCell: UITableViewCell {
             NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 0, blue: 0, alpha: 0.38)
         ]
         
-        let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: name, attributes: attributes)
+        let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: name, attributes: [
+            NSAttributedString.Key.font: UIFont(name: "", size: 19) ??  UIFont.boldSystemFont(ofSize: 19),
+            NSAttributedString.Key.foregroundColor: UIColor.red
+            ])
         if let location = location {
             attributedString.append(NSAttributedString(string: "\n"+location, attributes: attributes
             ))
         }
         if let type = type {
             attributedString.append(NSAttributedString(string: "\n"+type, attributes: [
-                    NSAttributedString.Key.font: UIFont(name: "", size: 14) ??  UIFont.systemFont(ofSize: 14),
+                    NSAttributedString.Key.font: UIFont(name: "", size: 16) ??  UIFont.systemFont(ofSize: 14),
                     NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 0, blue: 0, alpha: 0.99)
                 ]
             ))
@@ -37,5 +40,15 @@ class RestaurantCell: UITableViewCell {
             ))
         }
         titleLabel.attributedText = attributedString
+    }
+    
+    func setupRightLabel(rating: Double) {
+        rightLabel.attributedText = NSAttributedString(string: "\(rating)", attributes: [
+            NSAttributedString.Key.font: UIFont(name: "", size: 17) ??  UIFont.systemFont(ofSize: 17),
+            NSAttributedString.Key.foregroundColor: UIColor.white
+        ])
+        rightLabel.backgroundColor = UIColor(red: 201.0/255.0, green: 223.0/255.0, blue: 108.0/255.0, alpha: 1)
+        rightLabel.layer.masksToBounds = true
+        rightLabel.layer.cornerRadius = 4
     }
 }

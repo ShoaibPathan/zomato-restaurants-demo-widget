@@ -13,15 +13,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: "RestaurantCell", bundle: nil), forCellReuseIdentifier: "RestaurantCell")
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
         setTableViewDataSourceDelegate(viewController: self)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        setTableViewDataSourceDelegate(viewController: nil)
+        tableView.separatorStyle = .none
+        tableView.register(UINib(nibName: "RestaurantCell", bundle: nil), forCellReuseIdentifier: "RestaurantCell")
     }
     
     func setTableViewDataSourceDelegate(viewController: ViewController?) {
@@ -46,6 +40,8 @@ extension ViewController: UITableViewDataSource {
         cell.setTitle(name: "Hello I'm a restaurant", location: "This is my location", type: "Types", subtypes: "Type 1, Type 2, Type 3")
 //        cell.titleLabel.attributedText =  getAttributedString(string: "Hello I'm a cell \nThis is the new line \nthis is another new line")
         cell.rightLabel.attributedText = getAttributedString(string: "1.9")
+        cell.setupRightLabel(rating: 4.0)
+        cell.selectionStyle = .none
         return cell
     }
     
