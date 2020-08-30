@@ -14,13 +14,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Flg-YI-bq8">
-                    <rect key="frame" x="60" y="60" width="294" height="230"/>
+                    <rect key="frame" x="60" y="60" width="294" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpJ-dd-LcY">
-                    <rect key="frame" x="364" y="60" width="40" height="28.5"/>
+                    <rect key="frame" x="364" y="64" width="40" height="28.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="El7-ms-wAH"/>
                         <constraint firstAttribute="width" secondItem="lpJ-dd-LcY" secondAttribute="height" multiplier="1.4:1" id="jWf-XA-qez"/>
@@ -30,28 +30,39 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="restaurant_image" translatesAutoresizingMaskIntoConstraints="NO" id="rdh-Vi-k5U">
-                    <rect key="frame" x="10" y="60" width="40" height="40"/>
+                    <rect key="frame" x="10" y="64" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="9SZ-dY-R1Y"/>
                         <constraint firstAttribute="width" secondItem="rdh-Vi-k5U" secondAttribute="height" multiplier="1:1" id="xyu-6c-6o4"/>
                     </constraints>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpC-IV-E66">
+                    <rect key="frame" x="366" y="100.5" width="36" height="11"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Flg-YI-bq8" secondAttribute="bottom" constant="10" id="H22-DP-Xv8"/>
-                <constraint firstItem="rdh-Vi-k5U" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="Hc0-kP-oEr"/>
-                <constraint firstItem="lpJ-dd-LcY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="JYp-pj-uPX"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Flg-YI-bq8" secondAttribute="bottom" constant="10" id="H22-DP-Xv8"/>
+                <constraint firstItem="rdh-Vi-k5U" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="Hc0-kP-oEr"/>
+                <constraint firstItem="lpJ-dd-LcY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="JYp-pj-uPX"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="wpC-IV-E66" secondAttribute="bottom" constant="5" id="Mpw-3C-rVf"/>
                 <constraint firstItem="Flg-YI-bq8" firstAttribute="leading" secondItem="rdh-Vi-k5U" secondAttribute="trailing" constant="10" id="Z5q-AS-Dbf"/>
                 <constraint firstItem="Flg-YI-bq8" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="eKi-Qr-x8F"/>
+                <constraint firstItem="wpC-IV-E66" firstAttribute="centerX" secondItem="lpJ-dd-LcY" secondAttribute="centerX" id="h8w-Hj-42a"/>
                 <constraint firstItem="rdh-Vi-k5U" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="rgi-oe-n1f"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="lpJ-dd-LcY" secondAttribute="trailing" constant="10" id="u4L-U8-W1c"/>
                 <constraint firstItem="lpJ-dd-LcY" firstAttribute="leading" secondItem="Flg-YI-bq8" secondAttribute="trailing" constant="10" id="vjE-qT-ViH"/>
+                <constraint firstItem="wpC-IV-E66" firstAttribute="top" secondItem="lpJ-dd-LcY" secondAttribute="bottom" constant="8" id="yLe-Zh-6kC"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="leftImageView" destination="rdh-Vi-k5U" id="jWV-gl-77g"/>
                 <outlet property="rightLabel" destination="lpJ-dd-LcY" id="YpL-M6-xfe"/>
+                <outlet property="rightLabelDesc" destination="wpC-IV-E66" id="9uT-BO-o0P"/>
                 <outlet property="titleLabel" destination="Flg-YI-bq8" id="qfk-fu-gfN"/>
             </connections>
             <point key="canvasLocation" x="139" y="129"/>
