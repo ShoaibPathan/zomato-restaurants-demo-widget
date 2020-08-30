@@ -25,6 +25,8 @@
 		606957D424F65D82009F2DD2 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606957CD24F65D82009F2DD2 /* Photo.swift */; };
 		606957DA24F66052009F2DD2 /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606957D924F66052009F2DD2 /* RestaurantCell.swift */; };
 		606957DC24F6606D009F2DD2 /* RestaurantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 606957DB24F6606D009F2DD2 /* RestaurantCell.xib */; };
+		60EC47AB24FB8BF200929345 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60EC47AA24FB8BF200929345 /* Kingfisher.framework */; };
+		60EC47AC24FB8BF200929345 /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60EC47AA24FB8BF200929345 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		60F468DE24F820C800A866C4 /* ZomatoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F468DD24F820C800A866C4 /* ZomatoApi.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +46,20 @@
 			remoteInfo = ZomatoWidgetRestaurant;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		60EC47AD24FB8BF200929345 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				60EC47AC24FB8BF200929345 /* Kingfisher.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6069579024F65C40009F2DD2 /* ZomatoWidgetRestaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZomatoWidgetRestaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +86,7 @@
 		606957CD24F65D82009F2DD2 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		606957D924F66052009F2DD2 /* RestaurantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
 		606957DB24F6606D009F2DD2 /* RestaurantCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantCell.xib; sourceTree = "<group>"; };
+		60EC47AA24FB8BF200929345 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		60F468DD24F820C800A866C4 /* ZomatoApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZomatoApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60EC47AB24FB8BF200929345 /* Kingfisher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +123,7 @@
 				606957AC24F65C43009F2DD2 /* ZomatoWidgetRestaurantTests */,
 				606957B724F65C43009F2DD2 /* ZomatoWidgetRestaurantUITests */,
 				6069579124F65C40009F2DD2 /* Products */,
+				60EC47A924FB8BF200929345 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -185,6 +204,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		60EC47A924FB8BF200929345 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				60EC47AA24FB8BF200929345 /* Kingfisher.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		60F468DC24F820B100A866C4 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +230,8 @@
 				6069578C24F65C40009F2DD2 /* Sources */,
 				6069578D24F65C40009F2DD2 /* Frameworks */,
 				6069578E24F65C40009F2DD2 /* Resources */,
+				60EC47AD24FB8BF200929345 /* Embed Frameworks */,
+				60EC47AE24FB8C2C00929345 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -319,6 +348,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		60EC47AE24FB8C2C00929345 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6069578C24F65C40009F2DD2 /* Sources */ = {
@@ -511,6 +561,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ZomatoWidgetRestaurant/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -528,6 +582,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ZomatoWidgetRestaurant/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
