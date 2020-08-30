@@ -11,11 +11,29 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var restaurantList: [RestaurantModel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableViewDataSourceDelegate(viewController: self)
         tableView.separatorStyle = .none
         tableView.register(UINib(nibName: "RestaurantCell", bundle: nil), forCellReuseIdentifier: "RestaurantCell")
+        
+        getRestaurants()
+    }
+    
+    func getRestaurants() {
+        ZomatoApi().getSearchResponse(type: Search.self) { (success, search, error) in
+            if success, let restaurantList = search?.restaurants {
+                self.restaurantList = restaurantList
+            } else if error == nil {
+                // handle empty restaurant list
+            } else {
+                // handle error case
+            }
+            self.tableView.reloadData()
+        }
     }
     
     func setTableViewDataSourceDelegate(viewController: ViewController?) {
