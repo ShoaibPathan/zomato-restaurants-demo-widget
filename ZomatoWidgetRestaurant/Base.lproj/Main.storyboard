@@ -16,16 +16,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="96F-hL-HxG">
-                                <rect key="frame" x="0.0" y="5" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="96F-hL-HxG" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="2mP-iC-wzo"/>
-                            <constraint firstItem="96F-hL-HxG" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="avO-Kp-VQX"/>
-                            <constraint firstItem="96F-hL-HxG" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qwd-e3-qnE"/>
-                            <constraint firstItem="96F-hL-HxG" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="ufc-9W-sDy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="96F-hL-HxG" secondAttribute="top" id="JVP-jM-tEL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="96F-hL-HxG" secondAttribute="trailing" id="VA1-Eg-Ngx"/>
+                            <constraint firstItem="96F-hL-HxG" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="W8C-Bf-tKe"/>
+                            <constraint firstItem="96F-hL-HxG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mMU-ur-1wW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
