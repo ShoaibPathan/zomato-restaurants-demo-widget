@@ -27,11 +27,17 @@ class ViewController: UIViewController {
         ZomatoApi().getSearchResponse(type: Search.self) { (success, search, error) in
             if success, let restaurantList = search?.restaurants {
                 self.restaurantList = restaurantList
+                self.reloadTableViewData()
             } else if error == nil {
                 // handle empty restaurant list
             } else {
                 // handle error case
             }
+        }
+    }
+    
+    func reloadTableViewData() {
+        DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
@@ -44,7 +50,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return restaurantList.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -55,10 +61,10 @@ extension ViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell") as? RestaurantCell else {
             return UITableViewCell()
         }
-        cell.setTitle(name: "Hello I'm a restaurant", location: "This is my location", type: "Types", subtypes: "Type 1, Type 2, Type 3")
-//        cell.titleLabel.attributedText =  getAttributedString(string: "Hello I'm a cell \nThis is the new line \nthis is another new line")
-        cell.rightLabel.attributedText = getAttributedString(string: "1.9")
-        cell.setupRightLabel(rating: 4.0)
+        let restaurantModel: RestaurantModel = restaurantList[indexPath.row]
+        cell.setTitle(name: restaurantModel.restaurant?.name ?? "Restaurant Name", location: restaurantModel.restaurant?.location?.localityVerbose, type: restaurantModel.restaurant?.establishments?.first, subtypes: restaurantModel.restaurant?.cuisines)
+        cell.setupRightLabel(reviewCount: restaurantModel.restaurant?.allReviewCount)
+        cell.setImage(imageUrl: restaurantModel.restaurant?.thumb)
         cell.selectionStyle = .none
         return cell
     }
