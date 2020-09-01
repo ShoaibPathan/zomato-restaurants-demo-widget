@@ -19,7 +19,6 @@ class ViewController: UIViewController {
         setTableViewDataSourceDelegate(viewController: self)
         tableView.separatorStyle = .none
         tableView.register(UINib(nibName: "RestaurantCell", bundle: nil), forCellReuseIdentifier: "RestaurantCell")
-        
         getRestaurants()
     }
     
@@ -57,6 +56,14 @@ extension ViewController: UITableViewDataSource {
         return 1
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50.0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell") as? RestaurantCell else {
             return UITableViewCell()
@@ -68,7 +75,6 @@ extension ViewController: UITableViewDataSource {
         cell.selectionStyle = .none
         return cell
     }
-    
 }
 
 extension ViewController: UITableViewDelegate {

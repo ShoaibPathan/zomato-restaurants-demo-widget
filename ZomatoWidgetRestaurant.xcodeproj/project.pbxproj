@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		601BCA2A24FE656B006042CB /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 601BCA2924FE656B006042CB /* HeaderView.xib */; };
+		601BCA2C24FE657E006042CB /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601BCA2B24FE657E006042CB /* HeaderView.swift */; };
 		6069579424F65C40009F2DD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069579324F65C40009F2DD2 /* AppDelegate.swift */; };
 		6069579624F65C40009F2DD2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069579524F65C40009F2DD2 /* SceneDelegate.swift */; };
 		6069579824F65C40009F2DD2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069579724F65C40009F2DD2 /* ViewController.swift */; };
@@ -62,6 +64,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		601BCA2924FE656B006042CB /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		601BCA2B24FE657E006042CB /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		6069579024F65C40009F2DD2 /* ZomatoWidgetRestaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZomatoWidgetRestaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6069579324F65C40009F2DD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6069579524F65C40009F2DD2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +204,8 @@
 			children = (
 				606957D924F66052009F2DD2 /* RestaurantCell.swift */,
 				606957DB24F6606D009F2DD2 /* RestaurantCell.xib */,
+				601BCA2924FE656B006042CB /* HeaderView.xib */,
+				601BCA2B24FE657E006042CB /* HeaderView.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -327,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				606957DC24F6606D009F2DD2 /* RestaurantCell.xib in Resources */,
+				601BCA2A24FE656B006042CB /* HeaderView.xib in Resources */,
 				606957A324F65C43009F2DD2 /* LaunchScreen.storyboard in Resources */,
 				606957A024F65C43009F2DD2 /* Assets.xcassets in Resources */,
 				6069579B24F65C40009F2DD2 /* Main.storyboard in Resources */,
@@ -388,6 +395,7 @@
 				60F468DE24F820C800A866C4 /* ZomatoApi.swift in Sources */,
 				606957D324F65D82009F2DD2 /* User.swift in Sources */,
 				606957D224F65D82009F2DD2 /* Restaurant.swift in Sources */,
+				601BCA2C24FE657E006042CB /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
