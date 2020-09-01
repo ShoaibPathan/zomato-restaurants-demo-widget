@@ -19,12 +19,8 @@
 		606957AE24F65C43009F2DD2 /* ZomatoWidgetRestaurantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606957AD24F65C43009F2DD2 /* ZomatoWidgetRestaurantTests.swift */; };
 		606957B924F65C43009F2DD2 /* ZomatoWidgetRestaurantUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606957B824F65C43009F2DD2 /* ZomatoWidgetRestaurantUITests.swift */; };
 		606957CE24F65D82009F2DD2 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606957C724F65D82009F2DD2 /* Location.swift */; };
-		606957CF24F65D82009F2DD2 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606957C824F65D82009F2DD2 /* Review.swift */; };
 		606957D024F65D82009F2DD2 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606957C924F65D82009F2DD2 /* Search.swift */; };
-		606957D124F65D82009F2DD2 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606957CA24F65D82009F2DD2 /* City.swift */; };
 		606957D224F65D82009F2DD2 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606957CB24F65D82009F2DD2 /* Restaurant.swift */; };
-		606957D324F65D82009F2DD2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606957CC24F65D82009F2DD2 /* User.swift */; };
-		606957D424F65D82009F2DD2 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606957CD24F65D82009F2DD2 /* Photo.swift */; };
 		606957DA24F66052009F2DD2 /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606957D924F66052009F2DD2 /* RestaurantCell.swift */; };
 		606957DC24F6606D009F2DD2 /* RestaurantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 606957DB24F6606D009F2DD2 /* RestaurantCell.xib */; };
 		60EC47AB24FB8BF200929345 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60EC47AA24FB8BF200929345 /* Kingfisher.framework */; };
@@ -82,12 +78,8 @@
 		606957B824F65C43009F2DD2 /* ZomatoWidgetRestaurantUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZomatoWidgetRestaurantUITests.swift; sourceTree = "<group>"; };
 		606957BA24F65C43009F2DD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		606957C724F65D82009F2DD2 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		606957C824F65D82009F2DD2 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		606957C924F65D82009F2DD2 /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
-		606957CA24F65D82009F2DD2 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		606957CB24F65D82009F2DD2 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
-		606957CC24F65D82009F2DD2 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		606957CD24F65D82009F2DD2 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		606957D924F66052009F2DD2 /* RestaurantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
 		606957DB24F6606D009F2DD2 /* RestaurantCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantCell.xib; sourceTree = "<group>"; };
 		60EC47AA24FB8BF200929345 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
@@ -180,13 +172,9 @@
 		606957C624F65D39009F2DD2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				606957CA24F65D82009F2DD2 /* City.swift */,
 				606957C724F65D82009F2DD2 /* Location.swift */,
-				606957CD24F65D82009F2DD2 /* Photo.swift */,
 				606957CB24F65D82009F2DD2 /* Restaurant.swift */,
-				606957C824F65D82009F2DD2 /* Review.swift */,
 				606957C924F65D82009F2DD2 /* Search.swift */,
-				606957CC24F65D82009F2DD2 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -388,12 +376,8 @@
 				606957CE24F65D82009F2DD2 /* Location.swift in Sources */,
 				6069579E24F65C40009F2DD2 /* ZomatoWidgetRestaurant.xcdatamodeld in Sources */,
 				6069579624F65C40009F2DD2 /* SceneDelegate.swift in Sources */,
-				606957CF24F65D82009F2DD2 /* Review.swift in Sources */,
-				606957D124F65D82009F2DD2 /* City.swift in Sources */,
-				606957D424F65D82009F2DD2 /* Photo.swift in Sources */,
 				606957D024F65D82009F2DD2 /* Search.swift in Sources */,
 				60F468DE24F820C800A866C4 /* ZomatoApi.swift in Sources */,
-				606957D324F65D82009F2DD2 /* User.swift in Sources */,
 				606957D224F65D82009F2DD2 /* Restaurant.swift in Sources */,
 				601BCA2C24FE657E006042CB /* HeaderView.swift in Sources */,
 			);
