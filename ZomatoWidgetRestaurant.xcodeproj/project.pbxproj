@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		600E5C6C24FFD5300011334A /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600E5C6B24FFD5300011334A /* DropDownView.swift */; };
 		600E5C6E24FFE4F30011334A /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600E5C6D24FFE4F30011334A /* DropDown.swift */; };
-		601BCA2A24FE656B006042CB /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 601BCA2924FE656B006042CB /* HeaderView.xib */; };
 		6069579424F65C40009F2DD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069579324F65C40009F2DD2 /* AppDelegate.swift */; };
 		6069579624F65C40009F2DD2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069579524F65C40009F2DD2 /* SceneDelegate.swift */; };
 		6069579824F65C40009F2DD2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069579724F65C40009F2DD2 /* ViewController.swift */; };
@@ -24,6 +23,7 @@
 		606957D224F65D82009F2DD2 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606957CB24F65D82009F2DD2 /* Restaurant.swift */; };
 		606957DA24F66052009F2DD2 /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606957D924F66052009F2DD2 /* RestaurantCell.swift */; };
 		606957DC24F6606D009F2DD2 /* RestaurantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 606957DB24F6606D009F2DD2 /* RestaurantCell.xib */; };
+		60C96A222500A838008EBF8D /* DropDownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60C96A212500A838008EBF8D /* DropDownView.xib */; };
 		60EC47AB24FB8BF200929345 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60EC47AA24FB8BF200929345 /* Kingfisher.framework */; };
 		60EC47AC24FB8BF200929345 /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60EC47AA24FB8BF200929345 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		60F468DE24F820C800A866C4 /* ZomatoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F468DD24F820C800A866C4 /* ZomatoApi.swift */; };
@@ -63,7 +63,6 @@
 /* Begin PBXFileReference section */
 		600E5C6B24FFD5300011334A /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
 		600E5C6D24FFE4F30011334A /* DropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
-		601BCA2924FE656B006042CB /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		6069579024F65C40009F2DD2 /* ZomatoWidgetRestaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZomatoWidgetRestaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6069579324F65C40009F2DD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6069579524F65C40009F2DD2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +83,7 @@
 		606957CB24F65D82009F2DD2 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		606957D924F66052009F2DD2 /* RestaurantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
 		606957DB24F6606D009F2DD2 /* RestaurantCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantCell.xib; sourceTree = "<group>"; };
+		60C96A212500A838008EBF8D /* DropDownView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownView.xib; sourceTree = "<group>"; };
 		60EC47AA24FB8BF200929345 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		60F468DD24F820C800A866C4 /* ZomatoApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZomatoApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,9 +194,9 @@
 			children = (
 				606957D924F66052009F2DD2 /* RestaurantCell.swift */,
 				606957DB24F6606D009F2DD2 /* RestaurantCell.xib */,
-				601BCA2924FE656B006042CB /* HeaderView.xib */,
 				600E5C6B24FFD5300011334A /* DropDownView.swift */,
 				600E5C6D24FFE4F30011334A /* DropDown.swift */,
+				60C96A212500A838008EBF8D /* DropDownView.xib */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -324,8 +324,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				606957DC24F6606D009F2DD2 /* RestaurantCell.xib in Resources */,
-				601BCA2A24FE656B006042CB /* HeaderView.xib in Resources */,
 				606957A324F65C43009F2DD2 /* LaunchScreen.storyboard in Resources */,
+				60C96A222500A838008EBF8D /* DropDownView.xib in Resources */,
 				606957A024F65C43009F2DD2 /* Assets.xcassets in Resources */,
 				6069579B24F65C40009F2DD2 /* Main.storyboard in Resources */,
 			);

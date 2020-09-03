@@ -8,29 +8,37 @@
 
 import UIKit
 
-class DropDownView: UITableViewCell {
+class DropDownView: UITableViewHeaderFooterView {
     
     var dropDown: DropDown = DropDown(frame: .zero)
     var heightConstraint = NSLayoutConstraint()
     var label = UILabel(frame: .zero)
     var isOpen = true
     
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    @IBOutlet weak var dropDownButton: UIButton!
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var searchButtonWidthConstraint: NSLayoutConstraint!
+    @IBAction func dropDownAction(_ sender: Any) {
+        self.toggleDropDown()
+    }
+    @IBAction func searchButtonAction(_ sender: Any) {
+        // implement api call and get list
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        
     }
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         self.superview?.addSubview(dropDown)
+        self.superview?.bringSubviewToFront(dropDown)
         dropDown.translatesAutoresizingMaskIntoConstraints = false
-        dropDown.topAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        dropDown.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        dropDown.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        dropDown.topAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
+        dropDown.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
+        dropDown.widthAnchor.constraint(equalToConstant: 100).isActive = true
         heightConstraint = dropDown.heightAnchor.constraint(equalToConstant: 0)
     }
     
@@ -38,9 +46,9 @@ class DropDownView: UITableViewCell {
         if isOpen {
             isOpen = false
             NSLayoutConstraint.deactivate([heightConstraint])
-            var height: CGFloat = dropDown.tableView.contentSize.height
-            if dropDown.tableView.contentSize.height > 125 {
-                height = 125
+            var height: CGFloat = 150
+            if 150 > dropDown.tableView.contentSize.height{
+                height = dropDown.tableView.contentSize.height
             }
             self.heightConstraint.constant = height
             NSLayoutConstraint.activate([heightConstraint])
@@ -62,16 +70,13 @@ class DropDownView: UITableViewCell {
     }
 }
 
-protocol DropDownSourceDelegate {
-    func toggleDropDownCall()//(dropDownView: DropDownView)
-}
-
-extension DropDownView: DropDownSourceDelegate {
-    func toggleDropDownCall() {
-        self.toggleDropDown()
-    }
-}
-
 protocol DropDownDelegate {
     func optionSelected(option: String)
+}
+
+extension DropDownView: DropDownDelegate {
+    func optionSelected(option: String) {
+        self.toggleDropDown()
+        self.dropDownButton.setAttributedTitle(NSAttributedString(string: option), for: .normal)
+    }
 }
