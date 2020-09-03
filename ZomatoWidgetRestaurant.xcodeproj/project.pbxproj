@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		600E5C6C24FFD5300011334A /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600E5C6B24FFD5300011334A /* DropDownView.swift */; };
 		600E5C6E24FFE4F30011334A /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600E5C6D24FFE4F30011334A /* DropDown.swift */; };
+		606926C825013C0F00A2978E /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606926C725013C0F00A2978E /* Categories.swift */; };
 		6069579424F65C40009F2DD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069579324F65C40009F2DD2 /* AppDelegate.swift */; };
 		6069579624F65C40009F2DD2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069579524F65C40009F2DD2 /* SceneDelegate.swift */; };
 		6069579824F65C40009F2DD2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069579724F65C40009F2DD2 /* ViewController.swift */; };
@@ -63,6 +64,7 @@
 /* Begin PBXFileReference section */
 		600E5C6B24FFD5300011334A /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
 		600E5C6D24FFE4F30011334A /* DropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
+		606926C725013C0F00A2978E /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		6069579024F65C40009F2DD2 /* ZomatoWidgetRestaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZomatoWidgetRestaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6069579324F65C40009F2DD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6069579524F65C40009F2DD2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				606957C724F65D82009F2DD2 /* Location.swift */,
 				606957CB24F65D82009F2DD2 /* Restaurant.swift */,
 				606957C924F65D82009F2DD2 /* Search.swift */,
+				606926C725013C0F00A2978E /* Categories.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				600E5C6E24FFE4F30011334A /* DropDown.swift in Sources */,
 				6069579824F65C40009F2DD2 /* ViewController.swift in Sources */,
 				6069579424F65C40009F2DD2 /* AppDelegate.swift in Sources */,
+				606926C825013C0F00A2978E /* Categories.swift in Sources */,
 				606957CE24F65D82009F2DD2 /* Location.swift in Sources */,
 				6069579E24F65C40009F2DD2 /* ZomatoWidgetRestaurant.xcdatamodeld in Sources */,
 				6069579624F65C40009F2DD2 /* SceneDelegate.swift in Sources */,

@@ -33,24 +33,6 @@ class DropDown: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    enum TypesOfSearch: Int, CaseIterable {
-        case search
-        case categories
-        case location
-        
-        var description: String {
-            get {
-                switch self {
-                case .search:
-                    return "search"
-                case .categories:
-                    return "categories"
-                case .location:
-                    return "location"
-                }
-            }
-        }
-    }
 }
 
 extension DropDown: UITableViewDataSource, UITableViewDelegate {
