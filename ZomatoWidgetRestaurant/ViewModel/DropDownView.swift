@@ -14,7 +14,11 @@ class DropDownView: UITableViewHeaderFooterView {
     var heightConstraint = NSLayoutConstraint()
     var label = UILabel(frame: .zero)
     var isOpen = true
+    let widthOfDropDown: CGFloat = 130
+    var didTapSearchButton: (()->Void)?
     
+    @IBOutlet weak var dropDownLabel: UILabel!
+    @IBOutlet weak var dropDownBackgroundView: UIView!
     @IBOutlet weak var dropDownButton: UIButton!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
@@ -24,11 +28,11 @@ class DropDownView: UITableViewHeaderFooterView {
     }
     @IBAction func searchButtonAction(_ sender: Any) {
         // implement api call and get list
+        self.didTapSearchButton?()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
     }
     
     override func didMoveToSuperview() {
@@ -38,7 +42,7 @@ class DropDownView: UITableViewHeaderFooterView {
         dropDown.translatesAutoresizingMaskIntoConstraints = false
         dropDown.topAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
         dropDown.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        dropDown.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        dropDown.widthAnchor.constraint(equalToConstant: widthOfDropDown).isActive = true
         heightConstraint = dropDown.heightAnchor.constraint(equalToConstant: 0)
     }
     
@@ -77,6 +81,8 @@ protocol DropDownDelegate {
 extension DropDownView: DropDownDelegate {
     func optionSelected(option: String) {
         self.toggleDropDown()
-        self.dropDownButton.setAttributedTitle(NSAttributedString(string: option), for: .normal)
+        self.dropDownLabel.attributedText = NSAttributedString(string: option, attributes: [
+            NSAttributedString.Key.foregroundColor: UIColor.black
+        ])
     }
 }

@@ -72,10 +72,8 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 10).isActive = true
         label.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: -10).isActive = true
-//        label.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor).isActive = true
         label.leftAnchor.constraint(equalTo: cell.contentView.leftAnchor, constant: 10).isActive = true
         label.rightAnchor.constraint(equalTo: cell.contentView.rightAnchor, constant: 10).isActive = true
-//        label.widthAnchor.constraint(equalToConstant: 100).isActive = true
         return cell
     }
     
