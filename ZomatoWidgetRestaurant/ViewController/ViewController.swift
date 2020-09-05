@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    
+    var headerView: DropDownView?
     var restaurantList: [RestaurantModel] = []
     
     override func viewDidLoad() {
@@ -19,6 +19,7 @@ class ViewController: UIViewController {
         setTableViewDataSourceDelegate(viewController: self)
         tableView.separatorStyle = .none
         tableView.register(UINib(nibName: "RestaurantCell", bundle: nil), forCellReuseIdentifier: "RestaurantCell")
+        tableView.register(UINib(nibName: "DropDownView", bundle: nil), forHeaderFooterViewReuseIdentifier: "DropDownView")
         getRestaurants()
     }
     
@@ -49,22 +50,33 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return restaurantList.count
+        restaurantList.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        1
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50.0
+        60.0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView()
+        if let headerView = self.headerView {
+            return headerView
+        }
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "DropDownView") as? DropDownView else {
+            return UIView()
+        }
+        headerView.dropDown.delegate = headerView
+        headerView.contentView.backgroundColor = .white
+        self.headerView = headerView
+        
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("cell for row at \(indexPath.row) and contentSize \(tableView.contentSize)")
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell") as? RestaurantCell else {
             return UITableViewCell()
         }
@@ -72,14 +84,24 @@ extension ViewController: UITableViewDataSource {
         cell.setTitle(name: restaurantModel.restaurant?.name ?? "Restaurant Name", location: restaurantModel.restaurant?.location?.localityVerbose, type: restaurantModel.restaurant?.establishments?.first, subtypes: restaurantModel.restaurant?.cuisines)
         cell.setupRightLabel(reviewCount: restaurantModel.restaurant?.allReviewCount)
         cell.setImage(imageUrl: restaurantModel.restaurant?.thumb)
+        cell.backgroundColor = .white
         cell.selectionStyle = .none
         return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print(cell.frame)
+        print("willdisplay \(indexPath.row)")
     }
 }
 
 extension ViewController: UITableViewDelegate {
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 }
+
 
 
 // ViewController Utility Methods

@@ -15,6 +15,19 @@ enum TypesOfSearch: Int, CaseIterable {
         get {
             switch self {
             case .search:
+                return "Search"
+            case .categories:
+                return "Categories"
+            case .location:
+                return "Location"
+            }
+        }
+    }
+    
+    var apiDesc: String {
+        get {
+            switch self {
+            case .search:
                 return "search"
             case .categories:
                 return "categories"
