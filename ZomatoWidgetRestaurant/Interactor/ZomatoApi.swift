@@ -19,7 +19,7 @@ class ZomatoApi {
             // handle when something that request didn't happe cause of an error
             return
         }
-        URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+        makeApiCall(urlRequest: urlRequest) { (data, response, error) in
             guard let data = data, error == nil else {
                 completion(false, nil, error)
                 return
@@ -29,7 +29,7 @@ class ZomatoApi {
                 let responseData = try? decoder.decode(T.self, from: data)
                 completion(true, responseData, nil)
             }
-        }.resume()
+        }
     }
     
     fileprivate func getRequest(url urlStr: String?) -> URLRequest? {
@@ -37,5 +37,29 @@ class ZomatoApi {
         var urlRequest = URLRequest(url: url)
         urlRequest.addValue("26a8ad6f6001bd293eb60334d0b69d2b", forHTTPHeaderField: "user-key")
         return urlRequest
+    }
+    
+    fileprivate func makeApiCall(urlRequest: URLRequest, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+            completion(data, response, error)
+        }.resume()
+    }
+    
+    func getCategories(completion: @escaping ((Bool, CategoryList?, Error?) -> Void)) {
+        let urlString = baseUrl + "/categories"
+        guard let urlRequest = getRequest(url: urlString) else {
+            return
+        }
+        makeApiCall(urlRequest: urlRequest) { (data, response, error) in
+            guard let data = data, error == nil else {
+                completion(false, nil, error)
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                let responseData = try? decoder.decode(CategoryList.self, from: data)
+                completion(true, responseData, nil)
+            }
+        }
     }
 }
