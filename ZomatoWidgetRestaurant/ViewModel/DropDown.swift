@@ -12,7 +12,9 @@ class DropDown: UIView {
     
     var tableView: UITableView = UITableView()
     var delegate: DropDownDelegate?
-    
+    var categoryList: CategoryList?
+    var citiesList: [String]?
+    var cusinesList: [String]?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,6 +29,21 @@ class DropDown: UIView {
         self.tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         self.tableView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         self.tableView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        
+        makeApiCalls()
+    }
+    
+    func makeApiCalls() {
+        ZomatoApi().getCategories { (success, list, error) in
+            if(success) {
+                self.categoryList = list
+            } else {
+                self.categoryList = nil
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -35,9 +52,61 @@ class DropDown: UIView {
     
 }
 
+enum DropDownSections: Int, CaseIterable {
+    case categories
+    case cities
+    case cuisines
+    
+    func desc() -> String {
+        switch self {
+        case .categories:
+            return "Categories"
+        case .cities:
+            return "Cities"
+        case .cuisines:
+            return "Cuisines"
+        }
+    }
+}
+
 extension DropDown: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        TypesOfSearch.allCases.count
+        var rows = 0
+        switch DropDownSections.init(rawValue: section) {
+        case .categories:
+            rows = categoryList?.categories?.count ?? 0
+        case .cities:
+            rows = citiesList?.count ?? 0
+        case .cuisines:
+            rows = cusinesList?.count ?? 0
+        case .none:
+            break
+        }
+        return rows
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        50.0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        let label = UILabel()
+        let name = DropDownSections.init(rawValue: section)
+        label.attributedText = NSAttributedString(string: name?.desc() ?? "", attributes: [
+            NSAttributedString.Key.foregroundColor : UIColor.black
+        ])
+        view.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
+        label.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
+        label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+        return view
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        DropDownSections.allCases.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -48,6 +117,9 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
         let cell: UITableViewCell = UITableViewCell()
         let label: UILabel = UILabel()
         label.text = TypesOfSearch.init(rawValue: indexPath.row)?.description
+        if(indexPath.section == 0) {
+            label.text = categoryList?.categories?[indexPath.row].categories?.name
+        }
         cell.addSubview(label)
         cell.contentView.backgroundColor = .lightGray
         label.textAlignment = .center

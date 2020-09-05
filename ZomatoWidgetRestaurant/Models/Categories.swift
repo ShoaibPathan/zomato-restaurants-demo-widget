@@ -37,3 +37,16 @@ enum TypesOfSearch: Int, CaseIterable {
         }
     }
 }
+
+class CategoryList: Codable {
+    var categories: [CategoriesModel]?
+}
+
+class CategoriesModel: Codable {
+    var categories: Categories?
+}
+
+class Categories: Codable {
+    var id: Int?
+    var name: String?
+}
