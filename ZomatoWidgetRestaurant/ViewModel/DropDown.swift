@@ -13,8 +13,6 @@ class DropDown: UIView {
     var tableView: UITableView = UITableView()
     var delegate: DropDownDelegate?
     var categoryList: CategoryList?
-    var citiesList: [String]?
-    var cusinesList: [String]?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,7 +21,7 @@ class DropDown: UIView {
         tableView.delegate = self
         tableView.backgroundColor = .lightGray
         self.addSubview(tableView)
-        
+        tableView.addBorder()
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         self.tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
@@ -37,6 +35,7 @@ class DropDown: UIView {
         ZomatoApi().getCategories { (success, list, error) in
             if(success) {
                 self.categoryList = list
+                self.categoryList?.categories?[0].categories?.name = "--select--"
             } else {
                 self.categoryList = nil
             }
@@ -54,17 +53,11 @@ class DropDown: UIView {
 
 enum DropDownSections: Int, CaseIterable {
     case categories
-    case cities
-    case cuisines
     
     func desc() -> String {
         switch self {
         case .categories:
             return "Categories"
-        case .cities:
-            return "Cities"
-        case .cuisines:
-            return "Cuisines"
         }
     }
 }
@@ -75,10 +68,6 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
         switch DropDownSections.init(rawValue: section) {
         case .categories:
             rows = categoryList?.categories?.count ?? 0
-        case .cities:
-            rows = citiesList?.count ?? 0
-        case .cuisines:
-            rows = cusinesList?.count ?? 0
         case .none:
             break
         }
@@ -86,7 +75,7 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        50.0
+        0.0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -118,24 +107,27 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
         let label: UILabel = UILabel()
         label.text = TypesOfSearch.init(rawValue: indexPath.row)?.description
         if(indexPath.section == 0) {
-            label.text = categoryList?.categories?[indexPath.row].categories?.name
+            let categoryName: String? = categoryList?.categories?[indexPath.row].categories?.name
+            label.text = categoryName
+            if(indexPath.row == 0) {
+                label.attributedText = NSAttributedString(string: categoryName ?? "Category", attributes: [
+                    NSAttributedString.Key.foregroundColor: UIColor.lightGray
+                ])
+            }
         }
         cell.addSubview(label)
-        cell.contentView.backgroundColor = .lightGray
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         label.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 10).isActive = true
         label.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: -10).isActive = true
         label.leftAnchor.constraint(equalTo: cell.contentView.leftAnchor, constant: 10).isActive = true
-        label.rightAnchor.constraint(equalTo: cell.contentView.rightAnchor, constant: 10).isActive = true
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("child tableView didSelect")
-        guard let selectedOptionDesc = TypesOfSearch.init(rawValue: indexPath.row)?.description else {
+        guard let category: Categories = categoryList?.categories?[indexPath.row].categories else {
             return
         }
-        delegate?.optionSelected(option: selectedOptionDesc)
+        delegate?.optionSelected(category: category)
     }
 }

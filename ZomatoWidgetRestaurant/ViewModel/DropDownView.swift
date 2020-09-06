@@ -14,8 +14,8 @@ class DropDownView: UITableViewHeaderFooterView {
     var heightConstraint = NSLayoutConstraint()
     var label = UILabel(frame: .zero)
     var isOpen = true
-    let widthOfDropDown: CGFloat = 130
     var didTapSearchButton: (()->Void)?
+    var delegate: DropDownDelegate?
     
     @IBOutlet weak var dropDownLabel: UILabel!
     @IBOutlet weak var dropDownBackgroundView: UIView!
@@ -35,6 +35,15 @@ class DropDownView: UITableViewHeaderFooterView {
         super.init(coder: coder)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch: UITouch? = touches.first
+        //location is relative to the current view
+        // do something with the touched point
+        if touch?.view == dropDownBackgroundView || isOpen {
+            toggleDropDown()
+        }
+    }
+    
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         self.superview?.addSubview(dropDown)
@@ -42,7 +51,7 @@ class DropDownView: UITableViewHeaderFooterView {
         dropDown.translatesAutoresizingMaskIntoConstraints = false
         dropDown.topAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
         dropDown.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        dropDown.widthAnchor.constraint(equalToConstant: widthOfDropDown).isActive = true
+        dropDown.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/2 - 30).isActive = true
         heightConstraint = dropDown.heightAnchor.constraint(equalToConstant: 0)
     }
     
@@ -50,10 +59,11 @@ class DropDownView: UITableViewHeaderFooterView {
         if isOpen {
             isOpen = false
             NSLayoutConstraint.deactivate([heightConstraint])
-            var height: CGFloat = 150
-            if 150 > dropDown.tableView.contentSize.height{
+            var height: CGFloat = UIScreen.main.bounds.height/3
+            if height > dropDown.tableView.contentSize.height {
                 height = dropDown.tableView.contentSize.height
             }
+            self.superview?.bringSubviewToFront(dropDown)
             self.heightConstraint.constant = height
             NSLayoutConstraint.activate([heightConstraint])
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
@@ -75,14 +85,30 @@ class DropDownView: UITableViewHeaderFooterView {
 }
 
 protocol DropDownDelegate {
-    func optionSelected(option: String)
+    func optionSelected(category: Categories)
 }
 
 extension DropDownView: DropDownDelegate {
-    func optionSelected(option: String) {
+    func optionSelected(category: Categories) {
         self.toggleDropDown()
-        self.dropDownLabel.attributedText = NSAttributedString(string: option, attributes: [
-            NSAttributedString.Key.foregroundColor: UIColor.black
+        var color: UIColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.8)
+        if category.name == "--select--" {
+            color = .lightGray
+            changeOpacitySearch(opacity: 1.0, userInteraction: true)
+            self.delegate?.optionSelected(category: category)
+        } else {
+            changeOpacitySearch(opacity: 0.5, userInteraction: false)
+        }
+        self.dropDownLabel.attributedText = NSAttributedString(string: category.name ?? "Category", attributes: [
+            NSAttributedString.Key.foregroundColor: color
         ])
+        self.delegate?.optionSelected(category: category)
+    }
+    
+    func changeOpacitySearch(opacity: Float, userInteraction: Bool) {
+        textField.layer.opacity = opacity
+        searchButton.layer.opacity = opacity
+        textField.isUserInteractionEnabled = userInteraction
+        searchButton.isUserInteractionEnabled = userInteraction
     }
 }
