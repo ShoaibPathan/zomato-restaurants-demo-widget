@@ -6,4 +6,4 @@ Simple list of restaurants from zomato api. Consumed only required fields.
 
 Screenshot of the project
 
-<img src="Screenshot 2020-08-30 at 1.37.55 PM.png" width = "230px" height = "400px"/>
+<img src="Screenshot 2020-09-06 at 8.29.22 PM.png" width = "230px" height = "400px"/>
