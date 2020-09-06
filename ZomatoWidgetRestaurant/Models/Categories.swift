@@ -7,19 +7,13 @@
 //
 
 enum TypesOfSearch: Int, CaseIterable {
-    case search
     case categories
-    case location
     
     var description: String {
         get {
             switch self {
-            case .search:
-                return "Search"
             case .categories:
                 return "Categories"
-            case .location:
-                return "Location"
             }
         }
     }
@@ -27,12 +21,8 @@ enum TypesOfSearch: Int, CaseIterable {
     var apiDesc: String {
         get {
             switch self {
-            case .search:
-                return "search"
             case .categories:
                 return "categories"
-            case .location:
-                return "location"
             }
         }
     }
