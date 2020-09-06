@@ -23,11 +23,17 @@ class ViewController: UIViewController {
         getRestaurants()
     }
     
-    func getRestaurants() {
-        ZomatoApi().getSearchResponse(type: Search.self) { (success, search, error) in
+    func getRestaurants(categoryId: Int? = 1, searchParam: String? = nil) {
+        var id = categoryId
+        if searchParam == "" {
+            id = 1
+        }
+        ZomatoApi().getSearchResponse(type: Search.self, categoryId: id, searchParam: searchParam) { (success, search, error) in
             if success, let restaurantList = search?.restaurants {
                 self.restaurantList = restaurantList
-                self.reloadTableViewData()
+                DispatchQueue.main.async {
+                    self.reloadTableViewData()
+                }
             } else if error == nil {
                 // handle empty restaurant list
             } else {
@@ -71,7 +77,12 @@ extension ViewController: UITableViewDataSource {
         headerView.dropDown.delegate = headerView
         headerView.contentView.backgroundColor = .white
         self.headerView = headerView
-        
+        headerView.dropDownBackgroundView.addBorder()
+        headerView.delegate = self
+        headerView.textField.delegate = self
+        headerView.didTapSearchButton = {
+            self.getRestaurants(categoryId: nil, searchParam: headerView.textField.text)
+        }
         return headerView
     }
     
@@ -102,6 +113,25 @@ extension ViewController: UITableViewDelegate {
     }
 }
 
+extension ViewController: DropDownDelegate {
+    func optionSelected(category: Categories) {
+        guard let id = category.id else {
+            return
+        }
+        getRestaurants(categoryId: id)
+    }
+}
+
+extension ViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        getRestaurants(categoryId: nil, searchParam: textField.text)
+        return true
+    }
+}
 
 
 // ViewController Utility Methods
@@ -115,4 +145,14 @@ extension ViewController {
         return attributedText
     }
     
+}
+
+extension UIView {
+    func addBorder() {
+        let borderWidth: CGFloat = 1
+
+        frame = frame.insetBy(dx: -borderWidth, dy: -borderWidth)
+        layer.borderColor = UIColor.darkGray.cgColor
+        layer.borderWidth = borderWidth
+    }
 }

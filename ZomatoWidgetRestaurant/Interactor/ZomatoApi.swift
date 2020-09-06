@@ -13,8 +13,14 @@ class ZomatoApi {
     
     let baseUrl = "https://developers.zomato.com/api/v2.1"
     
-    func getSearchResponse<T: Codable>(type: T.Type, entityId: Int = 5, completion: @escaping ((Bool, T?, Error?) -> Void)) {
-        let urlString = baseUrl + "/search?entity_id=\(entityId)"
+    func getSearchResponse<T: Codable>(type: T.Type, categoryId: Int? = nil, searchParam: String? = nil, completion: @escaping ((Bool, T?, Error?) -> Void)) {
+        var urlString = baseUrl + "/search?"
+        if let id = categoryId {
+            urlString += "category=\(id)&"
+        }
+        if let query = searchParam {
+            urlString += "q=\(query)"
+        }
         guard let urlRequest = getRequest(url: urlString) else {
             // handle when something that request didn't happe cause of an error
             return
