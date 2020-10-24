@@ -1,0 +1,19 @@
+{
+  "Mac" : [
+
+  ],
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "commitish" : "v0.5",
+  "iOS" : [
+    {
+      "name" : "CustomDropDown",
+      "hash" : "60446a5452959a885324796cfb8d9831442d2dc973059c4097788e3214bc0928",
+      "swiftToolchainVersion" : "5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)"
+    }
+  ]
+}

@@ -43,7 +43,7 @@ extension KFImage {
 
         var downloadTask: DownloadTask?
 
-        var loadingOrSuccessed: Bool = false
+        var loadingOrSucceeded: Bool = false
 
         let onFailureDelegate = Delegate<KingfisherError, Void>()
         let onSuccessDelegate = Delegate<RetrieveImageResult, Void>()
@@ -55,19 +55,21 @@ extension KFImage {
 
         init(source: Source?, options: KingfisherOptionsInfo?, isLoaded: Binding<Bool>) {
             self.source = source
-            self.options = options
+            // The refreshing of `KFImage` would happen much more frequently then an `UIImageView`, even as a
+            // "side-effect". To prevent unintended flickering, add `.loadDiskFileSynchronously` as a default.
+            self.options = (options ?? []) + [.loadDiskFileSynchronously]
             self.isLoaded = isLoaded
             self.image = nil
         }
 
         func start() {
 
-            guard !loadingOrSuccessed else { return }
+            guard !loadingOrSucceeded else { return }
 
-            loadingOrSuccessed = true
+            loadingOrSucceeded = true
 
             guard let source = source else {
-                DispatchQueue.main.async {
+                CallbackQueue.mainCurrentOrAsync.execute {
                     self.onFailureDelegate.call(KingfisherError.imageSettingError(reason: .emptySource))
                 }
                 return
@@ -92,14 +94,17 @@ extension KFImage {
                             // by `Image.init(uiImage:)`. (The orientation information should be already contained in
                             // a `UIImage`)
                             // https://github.com/onevcat/Kingfisher/issues/1395
-                            self.image = value.image.kf.normalized
-                            DispatchQueue.main.async {
+                            let image = value.image.kf.normalized
+                            CallbackQueue.mainAsync.execute {
                                 self.isLoaded.wrappedValue = true
+                            }
+                            CallbackQueue.mainCurrentOrAsync.execute {
+                                self.image = image
                                 self.onSuccessDelegate.call(value)
                             }
                         case .failure(let error):
-                            self.loadingOrSuccessed = false
-                            DispatchQueue.main.async {
+                            self.loadingOrSucceeded = false
+                            CallbackQueue.mainCurrentOrAsync.execute {
                                 self.onFailureDelegate.call(error)
                             }
                         }
