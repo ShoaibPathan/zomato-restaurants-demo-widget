@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		600E5C6C24FFD5300011334A /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600E5C6B24FFD5300011334A /* DropDownView.swift */; };
 		600E5C6E24FFE4F30011334A /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600E5C6D24FFE4F30011334A /* DropDown.swift */; };
-		60168A7025434E3B009F603F /* CustomDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60168A6F25434E3A009F603F /* CustomDropDown.framework */; };
 		60168A7125434F20009F603F /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60EC47AA24FB8BF200929345 /* Kingfisher.framework */; };
 		60168A7325434F67009F603F /* Kingfisher.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60EC47AA24FB8BF200929345 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		60168A7425434F6C009F603F /* CustomDropDown.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60168A6F25434E3A009F603F /* CustomDropDown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6028BAD2254D810200ECEE66 /* CustomDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6028BAD1254D810100ECEE66 /* CustomDropDown.framework */; };
+		6028BAD3254D816600ECEE66 /* CustomDropDown.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6028BAD1254D810100ECEE66 /* CustomDropDown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		606926C825013C0F00A2978E /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606926C725013C0F00A2978E /* Categories.swift */; };
 		6069579424F65C40009F2DD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069579324F65C40009F2DD2 /* AppDelegate.swift */; };
 		6069579624F65C40009F2DD2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069579524F65C40009F2DD2 /* SceneDelegate.swift */; };
@@ -56,8 +56,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				6028BAD3254D816600ECEE66 /* CustomDropDown.framework in CopyFiles */,
 				60168A7325434F67009F603F /* Kingfisher.framework in CopyFiles */,
-				60168A7425434F6C009F603F /* CustomDropDown.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,8 +76,7 @@
 /* Begin PBXFileReference section */
 		600E5C6B24FFD5300011334A /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
 		600E5C6D24FFE4F30011334A /* DropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
-		60168A6C25434DD3009F603F /* CustomDropDown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CustomDropDown.framework; path = Carthage/Build/iOS/CustomDropDown.framework; sourceTree = "<group>"; };
-		60168A6F25434E3A009F603F /* CustomDropDown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CustomDropDown.framework; path = Carthage/Build/iOS/CustomDropDown.framework; sourceTree = "<group>"; };
+		6028BAD1254D810100ECEE66 /* CustomDropDown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CustomDropDown.framework; path = Carthage/Build/iOS/CustomDropDown.framework; sourceTree = "<group>"; };
 		606926C725013C0F00A2978E /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		6069579024F65C40009F2DD2 /* ZomatoWidgetRestaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZomatoWidgetRestaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6069579324F65C40009F2DD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,8 +108,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6028BAD2254D810200ECEE66 /* CustomDropDown.framework in Frameworks */,
 				60168A7125434F20009F603F /* Kingfisher.framework in Frameworks */,
-				60168A7025434E3B009F603F /* CustomDropDown.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,7 +133,6 @@
 		6069578724F65C40009F2DD2 = {
 			isa = PBXGroup;
 			children = (
-				60168A6C25434DD3009F603F /* CustomDropDown.framework */,
 				6069579224F65C40009F2DD2 /* ZomatoWidgetRestaurant */,
 				606957AC24F65C43009F2DD2 /* ZomatoWidgetRestaurantTests */,
 				606957B724F65C43009F2DD2 /* ZomatoWidgetRestaurantUITests */,
@@ -223,7 +221,7 @@
 		60EC47A924FB8BF200929345 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				60168A6F25434E3A009F603F /* CustomDropDown.framework */,
+				6028BAD1254D810100ECEE66 /* CustomDropDown.framework */,
 				60EC47AA24FB8BF200929345 /* Kingfisher.framework */,
 			);
 			name = Frameworks;
@@ -383,6 +381,8 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Kingfisher.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CustomDropDown.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;

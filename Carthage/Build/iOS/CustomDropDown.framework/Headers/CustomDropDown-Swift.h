@@ -214,6 +214,10 @@ SWIFT_CLASS("_TtC14CustomDropDown19DropDownDisplayView")
 
 
 
+
+
+
+
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
 #endif
@@ -429,6 +433,10 @@ SWIFT_CLASS("_TtC14CustomDropDown19DropDownDisplayView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
 - (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
 @end
+
+
+
+
 
 
 

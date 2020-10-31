@@ -12,7 +12,7 @@ import CustomDropDown
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var headerView: DropDownView?
+//    var headerView: DropDownView?
     var restaurantList: [RestaurantModel] = []
     var categoryList: [Categories] = []
     
@@ -195,7 +195,7 @@ extension ViewController: CustomDropDownDelegate, CustomDropDownDataSource {
         }
         headerView.dropDownButton.isUserInteractionEnabled = false
         headerView.contentView.backgroundColor = .white
-        self.headerView = headerView
+//        self.headerView = headerView
         headerView.dropDownLabel.tag = DropDownConfig().selectedLabelTag
         headerView.dropDownBackgroundView.addBorder()
         headerView.textField.delegate = self
@@ -207,12 +207,22 @@ extension ViewController: CustomDropDownDelegate, CustomDropDownDataSource {
     
     func config(identifier: Int) -> DropDownConfig {
         var config = DropDownConfig()
+        var shadowAndCornerConfig = ShadowAndCornerConfig()
+        shadowAndCornerConfig.shadowOffset = CGSize(width: 5, height: 5)
+        shadowAndCornerConfig.shadowOpacity = 0.8
+        shadowAndCornerConfig.shadowRadius = 5
+        shadowAndCornerConfig.cornerRadius = 5
+        
+        config.shadowAndCornerConfig = shadowAndCornerConfig
         config.dropDownLeftRightPadding = UIEdgeInsets(top: 10, left: 16, bottom: 0, right: 0)
         config.dropDownWidth = (UIScreen.main.bounds.width - 100)/2
         return config
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath, data: Any, identifier: Int) {
-        
+        guard let id = categoryList[indexPath.row].id else {
+            return
+        }
+        getRestaurants(categoryId: id)
     }
 }
