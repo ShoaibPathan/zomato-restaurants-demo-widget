@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		600E5C6C24FFD5300011334A /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600E5C6B24FFD5300011334A /* DropDownView.swift */; };
 		600E5C6E24FFE4F30011334A /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600E5C6D24FFE4F30011334A /* DropDown.swift */; };
+		60168A7125434F20009F603F /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60EC47AA24FB8BF200929345 /* Kingfisher.framework */; };
+		60168A7325434F67009F603F /* Kingfisher.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60EC47AA24FB8BF200929345 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6028BAD2254D810200ECEE66 /* CustomDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6028BAD1254D810100ECEE66 /* CustomDropDown.framework */; };
+		6028BAD3254D816600ECEE66 /* CustomDropDown.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6028BAD1254D810100ECEE66 /* CustomDropDown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		606926C825013C0F00A2978E /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606926C725013C0F00A2978E /* Categories.swift */; };
 		6069579424F65C40009F2DD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069579324F65C40009F2DD2 /* AppDelegate.swift */; };
 		6069579624F65C40009F2DD2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069579524F65C40009F2DD2 /* SceneDelegate.swift */; };
@@ -25,8 +29,6 @@
 		606957DA24F66052009F2DD2 /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606957D924F66052009F2DD2 /* RestaurantCell.swift */; };
 		606957DC24F6606D009F2DD2 /* RestaurantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 606957DB24F6606D009F2DD2 /* RestaurantCell.xib */; };
 		60C96A222500A838008EBF8D /* DropDownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60C96A212500A838008EBF8D /* DropDownView.xib */; };
-		60EC47AB24FB8BF200929345 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60EC47AA24FB8BF200929345 /* Kingfisher.framework */; };
-		60EC47AC24FB8BF200929345 /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60EC47AA24FB8BF200929345 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		60F468DE24F820C800A866C4 /* ZomatoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F468DD24F820C800A866C4 /* ZomatoApi.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,13 +50,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		60168A7225434F47009F603F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6028BAD3254D816600ECEE66 /* CustomDropDown.framework in CopyFiles */,
+				60168A7325434F67009F603F /* Kingfisher.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		60EC47AD24FB8BF200929345 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				60EC47AC24FB8BF200929345 /* Kingfisher.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,6 +76,7 @@
 /* Begin PBXFileReference section */
 		600E5C6B24FFD5300011334A /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
 		600E5C6D24FFE4F30011334A /* DropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
+		6028BAD1254D810100ECEE66 /* CustomDropDown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CustomDropDown.framework; path = Carthage/Build/iOS/CustomDropDown.framework; sourceTree = "<group>"; };
 		606926C725013C0F00A2978E /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		6069579024F65C40009F2DD2 /* ZomatoWidgetRestaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZomatoWidgetRestaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6069579324F65C40009F2DD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,7 +108,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60EC47AB24FB8BF200929345 /* Kingfisher.framework in Frameworks */,
+				6028BAD2254D810200ECEE66 /* CustomDropDown.framework in Frameworks */,
+				60168A7125434F20009F603F /* Kingfisher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +221,7 @@
 		60EC47A924FB8BF200929345 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6028BAD1254D810100ECEE66 /* CustomDropDown.framework */,
 				60EC47AA24FB8BF200929345 /* Kingfisher.framework */,
 			);
 			name = Frameworks;
@@ -232,6 +247,7 @@
 				6069578E24F65C40009F2DD2 /* Resources */,
 				60EC47AD24FB8BF200929345 /* Embed Frameworks */,
 				60EC47AE24FB8C2C00929345 /* ShellScript */,
+				60168A7225434F47009F603F /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -353,19 +369,22 @@
 /* Begin PBXShellScriptBuildPhase section */
 		60EC47AE24FB8C2C00929345 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CustomDropDown.framework",
 			);
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Kingfisher.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CustomDropDown.framework",
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
